@@ -1,1 +1,1 @@
-# epfl_chili_project
+# epfl_project
