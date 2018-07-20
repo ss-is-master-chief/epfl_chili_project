@@ -40,10 +40,10 @@ Example: 1563\tool.xml
 * How can we convert the XML scripts into Neo4J graphs via the Python Driver?
 * What are the XML features which the model should take as input for processing?
 * How can the model be trained on a very basic level to predict and suggest a suitable successor to any particular activity?
-```
+
 Ans. 
 Assuming that the LAMS sequences are stored in XML formats, the model can take in a few features such as '<activityTitle>' viz. listed under '<activities>'. Every '<activityTitle>' has a unique '<activityUIID>' associated with it, which is later used by the '<transitions>' block to define connections between activities through '<fromUIID>' and '<toUIID>'. A tuple of the title and the ID can be used as a feature to train the model. Since, there are quite a few patterns which are widely used and are effective as well, the training phase can be handled accordingly.
-```
+
 * How to make sure that the suggested successor to an activity would prove to be impactful on learners? 
 
 # LAMS Activities
