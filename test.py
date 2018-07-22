@@ -14,6 +14,7 @@ activityTitle = list()
 activityUIID = list()
 transitions = list()
 activities = dict()
+tool = list()
 
 for activity_uiid in root.iter('activityUIID'):
     activityUIID.append(activity_uiid.text)
@@ -27,22 +28,41 @@ for from_uiid in root.iter('fromUIID'):
 for activity_title in root.iter('activityTitle'):
     activityTitle.append(activity_title.text)
 
-for i in range(0,len(activityTitle)):
-    activities[activityUIID[i]] = activityTitle[i]
+for activity_title in root.iter('toolDisplayName'):
+    tool.append(activity_title.text)
 
-# print("toUIID\n",toUIID)
-# print("fromUIID\n",fromUIID)
-# print("acitivityUIID\n",activityUIID)
-# print("activityTitle\n",activityTitle)
-# print(activities)
+for i in range(0,len(activityTitle)):
+    try:
+        activities[activityUIID[i]] = tool[i]
+    except:
+        pass
 
 for i in range(0,len(toUIID)):
-    node1 = activities[fromUIID[i]]
-    node2 = activities[toUIID[i]]
-    temp = [node1,node2]
-    transitions.append(temp)
+    try:
+        node1 = activities[fromUIID[i]]
+        node2 = activities[toUIID[i]]
+        temp = [node1,node2]
+        transitions.append(temp)
+    except:
+        pass
 
-print(transitions)
+# print("fromUIID: \n",fromUIID,"\n")
+# print("toUIID: \n",toUIID,"\n")
+# print("activityUIID: \n",activityUIID,"\n")
+# print("activityTitle: \n",activityTitle,"\n")
+# print("tool: \n",tool,"\n")
+# print("activities\n",activities,"\n")
+# for tran in transitions:
+#     print(tran)
+
+list_transitions = list()
+
+for f in transitions:
+    if f not in list_transitions:
+        list_transitions.append(f)
+
+for stat in list_transitions:
+    print(stat,"\t",list_transitions.count(stat))
 
 # for activity in root.findall("activities"):
 #     origin = "org.lamsfoundation.lams.learningdesign.dto.AuthoringActivityDTO"
