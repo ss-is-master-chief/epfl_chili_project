@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 import glob
 import zipfile
@@ -81,6 +82,8 @@ class xml_stats_engine:
                 if t not in self.list_transitions:
                     # element = self.transitions[t][0] + "->" + self.transitions[t][1]
                     self.list_transitions.append(t)
+        
+            os.system("rm -rf {}{}".format(self.extract_root,file))
 
     def display_stats(self):
         for stat in self.list_transitions:
