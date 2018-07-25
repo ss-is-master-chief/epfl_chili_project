@@ -29,7 +29,7 @@ class xml_stats_engine:
         self.unzip_files()
         self.parse_xml()
         self.display_stats()
-        self.df.sort_values(by=['frequency'])
+        self.df = self.df.sort_values(by=['frequency'])
         self.df.to_csv('stats.csv',index=False)
 
 
