@@ -3,6 +3,7 @@ import os
 import glob
 import zipfile
 from xml.etree import ElementTree
+import pandas as pd
 
 class xml_stats_engine:
 
@@ -21,11 +22,15 @@ class xml_stats_engine:
     activities = dict()
     stats = list()
 
+    df = pd.DataFrame(columns=['from','to','frequency'])
+
     def __init__(self):
         self.get_zip()
         self.unzip_files()
         self.parse_xml()
         self.display_stats()
+        self.df.sort_values(by=['frequency'])
+        self.df.to_csv('stats.csv',index=False)
 
 
     def get_zip(self):
@@ -90,6 +95,7 @@ class xml_stats_engine:
             trans = stat[0]," -> ",stat[1]
             element = [''.join(trans), self.transitions.count(stat)]
             self.stats.append(element)
+            self.df = self.df.append({'from':stat[0],'to':stat[1],'frequency':self.transitions.count(stat)},ignore_index=True)
         
         max_l = 0
 
