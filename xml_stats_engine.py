@@ -9,7 +9,7 @@ import sys
 
 class xml_stats_engine:
 
-    root_folder = "./test-lams-community-scripts/"
+    root_folder = "./lams-community-scripts/"
     extract_root = "./extract-lams-community-scripts/"
     # root_folder = sys.argv[1]
     # extract_root = sys.argv[2]
