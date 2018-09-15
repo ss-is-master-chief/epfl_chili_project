@@ -1,5 +1,22 @@
 # Large Scale Instructional Design Analysis
 
+## Updates
+----
+
+### 15<sup>th</sup> September, 2018
+
+* Sequences with `Branching` involved have certain parameters such as `parentUIID`, `inputActivities`, `activityUIID`, `applyGrouping`, which can be used to create multiple branches
+* `Aggregated Activities` house multiple activities, each of which are intialised with respect to the parent activity
+* Example: There are 3 groups : Caterpillar, Lady Beetle, and Butterfly, in the sequence `australiasneighbours`.
+* Each of these groups have `parentUIID` set to 19, viz. the `activityUIID` of `Branching` node.
+* This means, that grouping is initialised in the `Branching` stage.
+* This flows into the `Aggregation` called `Resources&Forums`
+* There are other activities which we do not visually find on the sequence.
+* These certain activities have a `parentUIID` which helps us to understand its origin.
+* Branching (activityUIID = 19) &rarr; Caterpillar (activityUIID = 38, parentUIID = 19) &rarr; Qn'A (activityUIID = 42, parentUIID = 38)
+
+-----
+
 * Every learning sequence is stored in their zipped formats
 * `tool.xml` per Activity, describes the inner workings of that Activity
 * `learning_design.xml` is the main XML script which refer to the `tool.xml` scripts on the basis of `<ActivityID>` values
